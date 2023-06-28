@@ -1,9 +1,20 @@
-// eslint-disable-next-line no-unused-vars
-
 export default function createIteratorObject(report) {
-  const nArr = [];
-  for (const arr of Object.keys(report)) {
-    nArr.push(arr);
-  }
-  return nArr;
+  const iter = {
+    [Symbol.iterator]() {
+      const values = Object.values(report.allEmployees).flat();
+      let index = 0;
+
+      return {
+        next() {
+          if (index < values.length) {
+            const val = values[index];
+            index += 1;
+            return { value: val, done: false };
+          } return { done: true };
+        },
+      };
+    },
+  };
+
+  return iter;
 }
