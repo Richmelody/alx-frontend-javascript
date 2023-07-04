@@ -1,12 +1,6 @@
-/* eslint-disable no-unused-vars */
-import getListStudents from "./0-get_list_students.js";
-
-export default function getListStudentIds(obj) {
-  const myArr = getListStudents();
-
-  const mappedArr = myArr.map((element) => element.id);
-
-  if (Array.isArray(obj)) {
+export default function getListStudentIds(arr) {
+  if (Array.isArray(arr)) {
+    const mappedArr = arr.map((element) => element.id);
     return mappedArr;
   }
   return [];
